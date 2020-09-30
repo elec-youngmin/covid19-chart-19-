@@ -9,8 +9,8 @@
 
 사용한 기술 스택은 다음과 같습니다.
 
-frontend: react, next, reducer, react-chartjs, react-bootstrap
+frontend: react, next, redux, redux-saga, react-chartjs, react-bootstrap
 
 backend: node, express
 
-etc: axios
+etc: axios, dotenv
