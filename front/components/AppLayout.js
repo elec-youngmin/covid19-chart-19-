@@ -11,7 +11,6 @@ import { DATA_IMPORT_REQUEST, DATA_CHART_REQUEST } from "../reducers/covid";
 function AppLayout() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({ type: DATA_IMPORT_REQUEST });
     dispatch({ type: DATA_CHART_REQUEST });
   }, [dispatch]);
   const { loadDataDone, loadDataChartDone } = useSelector(
@@ -23,11 +22,10 @@ function AppLayout() {
       <Button variant="primary" size="lg" block className="title">
         코로나 19 현황 및 차트
       </Button>
-
       {/* <Button variant="primary" size="lg" onClick={push}>
         차트 보기
       </Button> */}
-      {loadDataDone ? <Board /> : <Loading />}
+      {loadDataChartDone ? <Board /> : <Loading />}
       {loadDataChartDone ? <Chart /> : <Loading />}
     </div>
   );
