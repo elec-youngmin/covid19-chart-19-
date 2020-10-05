@@ -9,25 +9,25 @@ import {
   DATA_CHART_FAILURE,
 } from "../reducers/covid";
 
-function dataImportApi() {
-  return axios.get("http://localhost:4000/");
-}
+// function dataImportApi() {
+//   return axios.get("http://localhost:4000/");
+// }
 
-function* dataPush() {
-  try {
-    const result = yield call(dataImportApi);
-    yield put({
-      type: DATA_IMPORT_SUCCESS,
-      data: result.data,
-    });
-  } catch (err) {
-    console.log(err);
-    yield put({
-      type: DATA_IMPORT_FAILURE,
-      error: err.response.data,
-    });
-  }
-}
+// function* dataPush() {
+//   try {
+//     const result = yield call(dataImportApi);
+//     yield put({
+//       type: DATA_IMPORT_SUCCESS,
+//       data: result.data,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     yield put({
+//       type: DATA_IMPORT_FAILURE,
+//       error: err.response.data,
+//     });
+//   }
+// }
 
 function dataChartApi() {
   return axios.get("http://localhost:4000/OfferChartData");
@@ -49,15 +49,15 @@ function* dataChart() {
   }
 }
 
-function* watchDataPush() {
-  yield takeLatest(DATA_IMPORT_REQUEST, dataPush);
-}
+// function* watchDataPush() {
+//   yield takeLatest(DATA_IMPORT_REQUEST, dataPush);
+// }
 
 function* watchDataChart() {
   yield takeLatest(DATA_CHART_REQUEST, dataChart);
 }
 
 export default function* covid() {
-  yield all([fork(watchDataPush)]);
+  // yield all([fork(watchDataPush)]);
   yield all([fork(watchDataChart)]);
 }

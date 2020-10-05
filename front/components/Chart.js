@@ -2,17 +2,6 @@ import ReactDOM from "react-dom";
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Line } from "react-chartjs-2";
-import { DATA_CHART_REQUEST } from "../reducers/covid";
-import axios from "axios";
-
-axios
-  .get("http://localhost:4000/OfferChartData")
-  .then(function (response) {
-    items = response.data;
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
 
 function Chart() {
   let date = [];

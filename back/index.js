@@ -8,7 +8,7 @@ const currentPut = async () => {
   let response;
   try {
     response = await axios.get(
-      `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${process.env.APIKEY}&startCreateDt=20200119&endCreateDt=20200928`
+      `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${process.env.APIKEY}&startCreateDt=20200302`
     );
   } catch (e) {
     console.log(e);
@@ -16,37 +16,13 @@ const currentPut = async () => {
   return response;
 };
 
-// const currentPutdata = async () => {
-//   let response;
-//   try {
-//     response = await axios.get(
-//       `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${process.env.APIKEY}startCreateDt=20200119`
-//     );
-//   } catch (e) {
-//     console.log(e);
-//   }
-//   return response;
-// };
-
-// app.get("/", (req, res) => {
-//   try {
-//     currentPutdata().then((response) => {
-//       res.setHeader("Access-Control-Allow-Origin", "*");
-//       console.log(response.data.response.body);
-//       res.json(response.data.response.body);
-//     });
-//   } catch (err) {
-//     console.error(err);
-//   }
-// });
-
 app.get("/OfferChartData", (req, res) => {
   try {
     currentPut().then((response) => {
       res.setHeader("Access-Control-Allow-Origin", "*");
 
       res.json(response.data.response.body.items.item);
-      // console.log(req);
+      console.log(response.data.response.body.items.item[0]);
     });
   } catch (err) {
     console.error(err);

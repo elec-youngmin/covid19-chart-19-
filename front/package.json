@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://mintzerocode.github.io/covid19-chart-19-/",
   "scripts": {
     "dev": "next -p 4500",
-    "build": "next build"
+    "build": "next build",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "author": "",
   "license": "MIT",
@@ -17,6 +20,7 @@
     "comma-number": "^2.0.1",
     "create-react-app": "^3.4.1",
     "eslint": "^7.8.1",
+    "gh-pages": "^3.1.0",
     "next": "^9.5.3",
     "next-redux-saga": "^4.1.2",
     "next-redux-wrapper": "^6.0.2",
