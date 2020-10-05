@@ -8,7 +8,9 @@ function Chart() {
   let cur = [];
   let data;
   const items = useSelector((state) => state.covid.chartData);
-  items.reverse();
+  if (items[0].stateDt !== 20200302) {
+    items.reverse();
+  }
 
   for (let index in items) {
     date[index] = items[index].stateDt;

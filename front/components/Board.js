@@ -13,20 +13,10 @@ import {
 } from "../reducers/covid";
 
 const Board = () => {
-  let data;
-  const dataSet = useSelector((state) => state.covid.chartData);
-  // console.log(dataSet.length - 1);
-  // console.log(dataSet[0].examCnt);
-
-  // if (dataSet[0].examCnt == 1) {
-  //   data = dataSet[dataSet.length - 1];
-  // } else {
-  //   data = dataSet[0];
-  // }
-  data = dataSet[0];
-
   const dispatch = useDispatch();
-
+  const data = useSelector((state) => state.covid.dataArray);
+  console.log(typeof data);
+  // const accExamCnt = data.accExamCnt.toLocaleString();
   return (
     <div>
       <Row className="board">
@@ -40,7 +30,7 @@ const Board = () => {
               dispatch({ type: DATA_EXAMCNT_REQUEST });
             }}
           >
-            전체 검사수:{data.accExamCnt}명
+            전체 검사수:{data.accExamCnt.toLocaleString()}명
           </Button>{" "}
         </Col>
 
@@ -54,7 +44,7 @@ const Board = () => {
               dispatch({ type: DATA_ACCEXAMCNT_REQUEST });
             }}
           >
-            일일 검사수:{data.examCnt}명
+            일일 검사수:{data.examCnt.toLocaleString()}명
           </Button>{" "}
         </Col>
 
@@ -68,7 +58,7 @@ const Board = () => {
               dispatch({ type: DATA_ACCEXAMCOMPCNT_REQUESST });
             }}
           >
-            전체 음성수:{data.resutlNegCnt}명{" "}
+            전체 음성수:{data.resutlNegCnt.toLocaleString()}명{" "}
           </Button>{" "}
         </Col>
 
@@ -82,7 +72,7 @@ const Board = () => {
               dispatch({ type: DATA_ACCDEFRATE_REQUEST });
             }}
           >
-            누적 확진률:{data.accDefRate}%
+            누적 확진률:{data.accDefRate.toLocaleString()}%
           </Button>{" "}
         </Col>
       </Row>
@@ -96,7 +86,7 @@ const Board = () => {
               dispatch({ type: DATA_DECIDECNT_REQUEST });
             }}
           >
-            전체 확진자{data.decideCnt}명
+            전체 확진자{data.decideCnt.toLocaleString()}명
           </Button>
         </Col>
 
@@ -109,7 +99,7 @@ const Board = () => {
               dispatch({ type: DATA_DEATHCNT_REQUEST });
             }}
           >
-            사망자:{data.deathCnt}명
+            사망자:{data.deathCnt.toLocaleString()}명
           </Button>
         </Col>
 
@@ -122,7 +112,7 @@ const Board = () => {
               dispatch({ type: DATA_CARECNT_REQUEST });
             }}
           >
-            치료중인 환자수:{data.careCnt}명
+            일일 치료중인 환자수:{data.careCnt.toLocaleString()}명
           </Button>
         </Col>
 
@@ -135,7 +125,7 @@ const Board = () => {
               dispatch({ type: DATA_CLEARCNT_REQUEST });
             }}
           >
-            치료 완료수:{data.clearCnt}명
+            전체 치료 완료수:{data.clearCnt.toLocaleString()}명
           </Button>
         </Col>
       </Row>

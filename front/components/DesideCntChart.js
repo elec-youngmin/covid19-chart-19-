@@ -6,7 +6,9 @@ const decideCntChart = () => {
   let cur = [];
   let data;
   const items = useSelector((state) => state.covid.chartData);
-
+  if (items[0].stateDt !== 20200302) {
+    items.reverse();
+  }
   for (let index in items) {
     date[index] = items[index].stateDt;
     cur[index] = items[index].decideCnt;

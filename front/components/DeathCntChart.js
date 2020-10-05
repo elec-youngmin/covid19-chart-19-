@@ -6,7 +6,9 @@ const DeathCntChart = () => {
   let cur = [];
   let data;
   const items = useSelector((state) => state.covid.chartData);
-
+  if (items[0].stateDt !== 20200302) {
+    items.reverse();
+  }
   for (let index in items) {
     date[index] = items[index].stateDt;
     cur[index] = items[index].deathCnt;
@@ -15,7 +17,7 @@ const DeathCntChart = () => {
     labels: date,
     datasets: [
       {
-        label: "누적 확진자 수",
+        label: "사망자수",
         data: cur,
         fill: false,
         pointHitRadius: 10,

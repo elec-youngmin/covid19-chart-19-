@@ -6,7 +6,9 @@ const AccExamCompCntChart = () => {
   let cur = [];
   let data;
   const items = useSelector((state) => state.covid.chartData);
-  items.reverse();
+  if (items[0].stateDt !== 20200302) {
+    items.reverse();
+  }
 
   for (let index in items) {
     date[index] = items[index].stateDt;
@@ -16,7 +18,7 @@ const AccExamCompCntChart = () => {
     labels: date,
     datasets: [
       {
-        label: "누적 확진자 수",
+        label: "전체 음성 차트",
         data: cur,
         fill: false,
         pointHitRadius: 10,

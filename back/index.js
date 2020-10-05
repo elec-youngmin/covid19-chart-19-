@@ -16,6 +16,30 @@ const currentPut = async () => {
   return response;
 };
 
+const currentPutdata = async () => {
+  let response;
+  try {
+    response = await axios.get(
+      `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${process.env.APIKEY}`
+    );
+  } catch (e) {
+    console.log(e);
+  }
+  return response;
+};
+
+app.get("/board", (req, res) => {
+  try {
+    currentPutdata().then((response) => {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      console.log(response.data.response.body.items.item);
+      res.json(response.data.response.body.items.item);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 app.get("/OfferChartData", (req, res) => {
   try {
     currentPut().then((response) => {

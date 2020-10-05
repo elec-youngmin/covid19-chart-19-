@@ -6,7 +6,9 @@ const ClearCntChart = () => {
   let cur = [];
   let data;
   const items = useSelector((state) => state.covid.chartData);
-
+  if (items[0].stateDt !== 20200302) {
+    items.reverse();
+  }
   for (let index in items) {
     date[index] = items[index].stateDt;
     cur[index] = items[index].clearCnt;
@@ -15,7 +17,7 @@ const ClearCntChart = () => {
     labels: date,
     datasets: [
       {
-        label: "누적 확진자 수",
+        label: "전체 치료 완료수",
         data: cur,
         fill: false,
         pointHitRadius: 10,

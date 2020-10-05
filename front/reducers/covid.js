@@ -7,6 +7,7 @@ export const initialState = {
   loadDataChartError: null,
   data_flag: [false, false, false, false, false, false, false, false],
   chartData: {},
+  dataArray: {},
 };
 
 export const DATA_ACCEXAMCNT_REQUEST = "DATA_ACCEXAMCNT_REQUEST";
@@ -28,14 +29,22 @@ export const DATA_CHART_FAILURE = "DATA_CHART_FAILURE";
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case DATA_IMPORT_SUCCESS: {
+      return {
+        ...state,
+        dataArray: action.data,
+        loadDataLoading: false,
+        loadDataDone: true,
+        loadDataError: null,
+      };
+    }
     case DATA_CHART_SUCCESS: {
       return {
         ...state,
+        chartData: action.data,
         loadDataChartLoading: false,
         loadDataChartDone: true,
         loadDataChartError: null,
-        loadDataDone: true,
-        chartData: action.data,
       };
     }
     case DATA_ACCEXAMCNT_REQUEST: {
