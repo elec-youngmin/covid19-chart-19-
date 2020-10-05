@@ -10,7 +10,7 @@ import {
 } from "../reducers/covid";
 
 function dataImportApi() {
-  return axios.get("http://localhost:4000/board");
+  return axios.get("/board");
 }
 
 function* dataPush() {
@@ -30,7 +30,7 @@ function* dataPush() {
 }
 
 function dataChartApi() {
-  return axios.get("http://localhost:4000/OfferChartData");
+  return axios.get("/OfferChartData");
 }
 
 function* dataChart() {

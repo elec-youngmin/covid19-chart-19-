@@ -1,6 +1,4 @@
-import ReactDOM from "react-dom";
-import { useState, useEffect, useMemo, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Line } from "react-chartjs-2";
 
 function Chart() {
