@@ -19,6 +19,6 @@
 
 사용한 기술 스택은 다음과 같습니다.
 
-frontend: java script, react, next, redux, redux-saga, react-chart, react-bootstrap 
-backend: node, express 
-etc: axios, dotenv 
+frontend: java script, react, next, redux, redux-saga, react-chart, react-bootstrap   
+backend: node, express   
+etc: axios, dotenv   
